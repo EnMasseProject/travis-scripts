@@ -2,6 +2,7 @@
 
 # Assumes that COMMIT, DOCKER_EMAIL, DOCKER_USER and DOCKER_PASS to be set
 REPO=$1
+DIR=$2
 TAG="latest"
 
 if [ -n "$TRAVIS_TAG" ]
@@ -9,7 +10,7 @@ then
     TAG="$TRAVIS_TAG"
 fi
 
-docker build -t $REPO:$COMMIT || exit 1
+docker build -t $REPO:$COMMIT $DIR || exit 1
 
 if [ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]
 then
