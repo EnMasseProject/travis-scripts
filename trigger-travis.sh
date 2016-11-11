@@ -16,4 +16,4 @@ curl -s -X POST \
   -H "Travis-API-Version: 3" \
   -H "Authorization: token $TRAVIS_TOKEN" \
   -d "$body" \
-  https://api.travis-ci.org/repo/EnMasseProject%2Fsmoketest/requests
+  https://api.travis-ci.org/repo/EnMasseProject%2Fsystemtests/requests
