@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Assumes that COMMIT, DOCKER_EMAIL, DOCKER_USER and DOCKER_PASS to be set
+# Assumes that COMMIT, DOCKER_USER and DOCKER_PASS to be set
 REPO=$1
 DIR=$2
 TAG="latest"
