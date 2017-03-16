@@ -3,7 +3,7 @@ TAG=$1
 
 TMPDIR=/tmp/enmasse-release-repos
 GIT_URL=git@github.com:EnMasseProject
-REPOSITORIES="enmasse-rest mqtt-frontend subserv configserv storage-controller artemis-image dockerfiles ragent topic-forwarder openshift-configuration"
+REPOSITORIES="amqp-kafka-bridge mqtt-gateway mqtt-lwt subserv configserv address-controller artemis-image dockerfiles ragent topic-forwarder openshift-configuration"
 
 mkdir -p $TMPDIR
 
