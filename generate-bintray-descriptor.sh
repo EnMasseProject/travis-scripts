@@ -43,7 +43,7 @@ EOF
     for file in $FILES
     do
         base=`basename $file`
-        echo "        {\"includePattern\": \"$file\", \"uploadPattern\": \"$base\", \"matrixParams\": {\"override\": 1}}"
+        echo "        {\"includePattern\": \"$file\", \"uploadPattern\": \"${TAG}/$base\", \"matrixParams\": {\"override\": 1}}"
     done
 cat<<EOF
     ],
