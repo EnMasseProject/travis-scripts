@@ -1,4 +1,5 @@
 #!/bin/sh
+COMPONENT=${1:-systemtests}
 
 dir=`git rev-parse --show-toplevel`
 orgDir=`dirname $dir`
@@ -16,4 +17,4 @@ curl -s -X POST \
   -H "Travis-API-Version: 3" \
   -H "Authorization: token $TRAVIS_TOKEN" \
   -d "$body" \
-  https://api.travis-ci.org/repo/EnMasseProject%2Fsystemtests/requests
+  https://api.travis-ci.org/repo/EnMasseProject%2F${COMPONENT}/requests
