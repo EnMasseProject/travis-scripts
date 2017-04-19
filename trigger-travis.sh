@@ -1,5 +1,5 @@
 #!/bin/sh
-COMPONENT=${1:-systemtests}
+COMPONENT=${1:-"systemtests"}
 
 dir=`git rev-parse --show-toplevel`
 orgDir=`dirname $dir`
