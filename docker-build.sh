@@ -9,6 +9,7 @@ TAG="latest"
 if [ -n "$TRAVIS_TAG" ]
 then
     TAG="$TRAVIS_TAG"
+    VERSION="$TRAVIS_TAG"
 fi
 
 docker build --build-arg version=$VERSION -t $REPO:$COMMIT $DIR || exit 1
