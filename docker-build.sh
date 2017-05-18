@@ -4,7 +4,7 @@
 REPO=$1
 DIR=$2
 VERSION=${3:-"latest"}
-TAG="latest"
+TAG=${4:-"latest"}
 
 if [ -n "$TRAVIS_TAG" ]
 then
