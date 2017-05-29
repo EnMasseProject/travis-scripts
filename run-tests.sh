@@ -13,5 +13,4 @@ do
 done
 
 ./scripts/run_test_travis.sh enmasse.yaml
-./scripts/print_logs.sh
 popd
