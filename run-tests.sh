@@ -3,16 +3,17 @@ COMMIT=$1
 ENMASSE_DIR=$2
 COMPONENTS=${@:3}
 
-pushd systemtests
-sleep 20
-export PATH=$PATH:/tmp/openshift
-
 if [ -z $ENMASSE_DIR ] || [ "$ENMASSE_DIR" == "" ]; then
     curl -0 https://dl.bintray.com/enmasse/snapshots/latest/enmasse-latest.tar.gz | tar -zx
     ENMASSE_DIR=`readlink -f enmasse-latest`
 else
     ENMASSE_DIR=`readlink -f $ENMASSE_DIR`
 fi
+
+pushd systemtests
+sleep 20
+export PATH=$PATH:/tmp/openshift
+
 
 for COMPONENT in $COMPONENTS
 do
