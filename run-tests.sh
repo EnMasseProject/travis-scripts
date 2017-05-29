@@ -21,7 +21,9 @@ do
 done
 
 ./scripts/run_test_component.sh $ENMASSE_DIR
-if [ $? -gt 0 ]; then
+retval=$?
+if [ $retval -gt 0 ]; then
     ./scripts/print_logs.sh /tmp/openshift
 fi
 popd
+exit $retval
