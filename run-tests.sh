@@ -13,4 +13,7 @@ do
 done
 
 ./scripts/run_test_travis.sh enmasse.yaml
+if [ $? -gt 0 ]; then
+    ./scripts/print_logs.sh /tmp/openshift
+fi
 popd
