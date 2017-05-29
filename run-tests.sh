@@ -17,7 +17,7 @@ fi
 for COMPONENT in $COMPONENTS
 do
     echo "Replacing for $COMPONENT"
-    sed -i -e "s/${COMPONENT}:latest/${COMPONENT}:${COMMIT}/g" $ENMASSE_DIR/openshift/enmasse.yaml
+    sed -i -e "s,${COMPONENT}:latest,${COMPONENT}:${COMMIT},g" $ENMASSE_DIR/openshift/enmasse.yaml
 done
 
 ./scripts/run_test_component.sh $ENMASSE_DIR
