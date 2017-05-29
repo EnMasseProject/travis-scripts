@@ -20,6 +20,8 @@ do
     sed -i -e "s,${COMPONENT}:latest,${COMPONENT}:${COMMIT},g" $ENMASSE_DIR/openshift/enmasse.yaml
 done
 
+echo "Running tests from $ENMASSE_DIR"
+
 ./scripts/run_test_component.sh $ENMASSE_DIR
 retval=$?
 if [ $retval -gt 0 ]; then
