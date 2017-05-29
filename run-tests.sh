@@ -10,6 +10,8 @@ export PATH=$PATH:/tmp/openshift
 if [ -n $ENMASSE_DIR ] || [ "$ENMASSE_DIR" == "" ]; then
     curl -0 https://dl.bintray.com/enmasse/snapshots/latest/enmasse-latest.tar.gz | tar -zx
     ENMASSE_DIR=`readlink -f enmasse-latest`
+else
+    ENMASSE_DIR=`readlink -f $ENMASSE_DIR`
 fi
 
 for COMPONENT in $COMPONENTS
