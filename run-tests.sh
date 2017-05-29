@@ -1,18 +1,24 @@
 #!/bin/bash
 COMMIT=$1
-COMPONENTS=${@:2}
+ENMASSE_DIR=$2
+COMPONENTS=${@:3}
 
 pushd systemtests
 sleep 20
 export PATH=$PATH:/tmp/openshift
-cat /etc/hosts
-curl -L https://raw.githubusercontent.com/EnMasseProject/enmasse/master/install/openshift/enmasse.yaml -o enmasse.yaml
+
+if [ -n $ENMASSE_DIR ] || [ "$ENMASSE_DIR" == "" ]; then
+    curl -0 https://dl.bintray.com/enmasse/snapshots/latest/enmasse-latest.tar.gz | tar -zx
+    ENMASSE_DIR=`readlink -f enmasse-latest`
+fi
+
 for COMPONENT in $COMPONENTS
 do
-    sed -i -e "s/${COMPONENT}:latest/${COMPONENT}:${COMMIT}/g" enmasse.yaml
+    echo "Replacing for $COMPONENT"
+    sed -i -e "s/${COMPONENT}:latest/${COMPONENT}:${COMMIT}/g" $ENMASSE_DIR/openshift/enmasse.yaml
 done
 
-./scripts/run_test_travis.sh enmasse.yaml
+./scripts/run_test_component.sh $ENMASSE_DIR
 if [ $? -gt 0 ]; then
     ./scripts/print_logs.sh /tmp/openshift
 fi
