@@ -13,4 +13,5 @@ docker build --build-arg version=$VERSION -t $REPO:$COMMIT $DIR || exit 1
 
 docker login -u $DOCKER_USER -p $DOCKER_PASS || exit 1
 docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER || exit 1
+echo "Pushing $REPO:$COMMIT"
 docker push $REPO || exit 1
