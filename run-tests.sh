@@ -17,7 +17,7 @@ export PATH=$PATH:/tmp/openshift
 
 for COMPONENT in $COMPONENTS
 do
-    echo "Replacing for $COMPONENT"
+    echo "Replacing for $COMPONENT:$COMMIT"
     sed -i -e "s,${COMPONENT}:latest,${COMPONENT}:${COMMIT},g" $ENMASSE_DIR/openshift/enmasse.yaml
 done
 
