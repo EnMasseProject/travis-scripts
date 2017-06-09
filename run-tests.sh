@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 COMMIT=$1
 ENMASSE_DIR=$2
 COMPONENTS=${@:3}
