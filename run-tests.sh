@@ -26,7 +26,9 @@ echo "Running tests from $ENMASSE_DIR"
 ./scripts/run_test_component.sh $ENMASSE_DIR
 retval=$?
 if [ $retval -gt 0 ]; then
+    echo "Tests failed, printing logs"
     ./scripts/print_logs.sh /tmp/openshift
 fi
 popd
+echo "Done running tests. Exiting with $retval"
 exit $retval
