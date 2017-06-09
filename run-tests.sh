@@ -30,6 +30,7 @@ if [ $retval -gt 0 ]; then
     echo "Tests failed, printing logs"
     bash ./scripts/print_logs.sh /tmp/openshift
     echo "Printed logs"
+    exit $retval
 fi
 popd
 echo "Done running tests. Exiting with $retval"
