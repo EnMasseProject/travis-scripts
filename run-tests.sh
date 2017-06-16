@@ -20,6 +20,13 @@ for COMPONENT in $COMPONENTS
 do
     echo "Replacing for $COMPONENT:$COMMIT"
     sed -i -e "s,${COMPONENT}:latest,${COMPONENT}:${COMMIT},g" $ENMASSE_DIR/openshift/enmasse.yaml
+    replaced=`grep -c "${COMPONENT}:${COMMIT}" $ENMASSE_DIR/openshift/enmasse.yaml`
+    if [ $replaced -gt 0 ]; then
+        echo "Found $replaced occurences"
+    else
+        echo "Replacement not complete, exiting"
+        exit 1
+    fi
 done
 
 echo "Running tests from $ENMASSE_DIR"
