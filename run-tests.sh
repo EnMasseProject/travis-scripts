@@ -4,6 +4,11 @@ COMMIT=$1
 ENMASSE_DIR=$2
 COMPONENTS=${@:3}
 
+if [ -z $COMMIT ] || [ "$COMMIT" == "" ]; then
+    FULL_COMMIT=`git rev-parse HEAD`
+    export COMMIT=${FULL_COMMIT::8}
+fi
+
 if [ -z $ENMASSE_DIR ] || [ "$ENMASSE_DIR" == "" ]; then
     curl -0 https://dl.bintray.com/enmasse/snapshots/latest/enmasse-latest.tar.gz | tar -zx
     ENMASSE_DIR=`readlink -f enmasse-latest`
